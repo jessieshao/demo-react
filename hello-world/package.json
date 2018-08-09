@@ -13,5 +13,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage" : "http://jessieshao.github.io/demo-react/hello-world"
+  "homepage" : "http://jessieshao.github.io/demo-react/hello-world/build"
 }
