@@ -1,45 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
-import './App.css';
-import TodoInput from './TodoInput'
-import TodoItem from './TodoItem'
-import 'normalize.css'
-import './reset.css'
+import App from './App'
 
-
-
-
-
-class App extends Component {
-    constructor(props){
-        super(props)
-        this.states = {
-            newTodo: 'test',
-            todoList: [
-                {id: 1, title:'第一个待办'},
-                {id: 2, title:'第二个待办'},
-            ]
-        }
-    }
-    render(){
-        let todos = this.states.todoList.map((item,index)=>{
-            return ( 
-                <li>
-                  <TodoItem todo={item} />
-                </li>
-              )
-        })
-
-        return (
-            <div className = "App">
-                 <h1>我的待办</h1>
-                 <div className="inputWrapper">
-                    <TodoInput content={this.state.newTodo}/>
-                 </div>
-                 <ol>
-                    {todos}
-                 </ol>
-            </div>
-        )
-    }
-}
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
+)
