@@ -18,14 +18,9 @@ import React, { Component } from 'react';
       }
       sighUp(e){}
       signIn(e){}
-      changeUsername(e){
-          let stateCopy = JSON.parse(JSON.stringify(this.state))
-          stateCopy.formData.username = e.targer.value
-          this.setState(stateCopy)
-      }
-      changePassword(e){ 
-        let stateCopy = JSON.parse(JSON.stringify(this.state))  // 用 JSON 深拷贝
-        stateCopy.formData.password = e.target.value
+      changeFormData(key,e){
+        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        stateCopy.formData[key] = e.target.value  
         this.setState(stateCopy)
       }
    render(){
@@ -34,12 +29,12 @@ import React, { Component } from 'react';
           <div className="row">
             <label>用户名</label> 
             <input type="text" value={this.state.formData.username}
-            onChange={this.changeUsername.bind(this)}/>
+            onChange={this.changeUsername.bind(this,'username')}/>
           </div>
           <div className="row">
             <label>密码</label>
             <input type="password" value={this.state.formData.password} 
-             onChange={this.changePassword.bind(this)}/>
+             onChange={this.changePassword.bind(this,'password')}/>
             </div>
           <div className="row actions">
             <button type="submit">注册</button>
@@ -51,11 +46,11 @@ import React, { Component } from 'react';
         <div className="row">
             <label>用户名</label>
             <input type="text" value={this.state.formData.username}
-             onChange={this.changeUsername.bind(this)}/>          </div>
+             onChange={this.changeUsername.bind(this,'username')}/>          </div>
           <div className="row">
             <label>密码</label>
             <input type="password" value={this.state.formData.password}
-             onChange={this.changePassword.bind(this)}/>          </div>
+             onChange={this.changePassword.bind(this,'password')}/>          </div>
           <div className="row actions">
             <button type="submit">登录</button>
           </div>
