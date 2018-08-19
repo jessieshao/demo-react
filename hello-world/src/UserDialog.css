@@ -10,6 +10,7 @@
     border: 1px solid #aaa;
     box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
  }
+ .UserDialog .signInOrSignUp > nav{padding: 1em ;}
  UserDialog .signInOrSignUp > nav:first-child{ padding: 1em; margin-left: -2em;}
  .UserDialog .signInOrSignUp > nav:first-child label{ margin-left: 2em; cursor: pointer;}
  .UserDialog .signInOrSignUp > .panes { padding: 0 1em 1em; }
