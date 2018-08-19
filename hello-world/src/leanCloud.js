@@ -8,18 +8,27 @@ AV.init({
 });
 export default AV
 
-export function signUp(username,password,successFn,errorFn){
+export function signUp(email,username,password,successFn,errorFn){
     var user = new AV.User()
+    user.setEmail(email)
     user.setUsername(username)
     user.setPassword(password)
     user.signUp().then(function(loginedUser){
         let user = getUserFromAVUser(loginedUser)
         successFn.call(null,user)
     },function(error){
-        error.call(null,error)
+        errorFn.call(null,error)
     })
     return undefined
 }
+export function signIn(username, password, successFn, errorFn){
+    AV.User.logIn(username, password).then(function (loginedUser) {
+      let user = getUserFromAVUser(loginedUser)
+      successFn.call(null, user)
+    }, function (error) {
+      errorFn.call(null, error)
+    })
+  }
 export function getCurrentUser(){
     let user = AV.User.current()
     if(user){
@@ -32,6 +41,15 @@ export function getCurrentUser(){
     AV.User.logOut()
     return undefined
   } 
+  export function sendPasswordResetEmail(email, successFn, errorFn){
+    AV.User.requestPasswordReset(email).then(function (success) {
+      successFn.call() 
+    }, function (error) {
+        errorFn.call(null, error)
+    })
+  }
+ 
+ 
  
 function getUserFromAVUser(AVUser){
     return{
